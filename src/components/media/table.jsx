@@ -1,6 +1,6 @@
 import {Fragment} from 'react'
 
-export function Table({media}){
+export function Table({medias}){
     return(
         <table className="table">
             <thead>
@@ -10,12 +10,12 @@ export function Table({media}){
                     <th scope="col">serial</th>
                     <th scope="col">url</th>
                     <th scope="col">image</th>
-                    <th scope="col">datetimecreate</th>
+                    <th scope="col">Fecha de creaacion</th>
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
             <tbody>{
-                media.map((medi,index) => (<Fragment>
+                medias.map((medi,index) => (<Fragment>
                     <tr key={index}>
                         <th scope="row">{index + 1}</th>
                         <td>{medi.sinopsis}</td>

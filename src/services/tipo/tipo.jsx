@@ -2,12 +2,13 @@ import {axiosconfiguration} from '../../configuration/configuration'
 
 
 const gettipo = () => { 
-    return axiosconfiguration.get('/tipys/tipos?name=PELÍCULA',{
+    return axiosconfiguration.get('/tipys/tipos?name=NOVELAS',{
         headers:{
             'Content-Type':'application/json'
         }
     })
 }
+
 
 const posttipo = (data) => {
     return axiosconfiguration.post('/tipys/tipo',data,{

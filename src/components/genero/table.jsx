@@ -1,6 +1,11 @@
 import {Fragment} from 'react'
 
-export function Table({generos}){
+export function Table({generos=[],borrargenero}){
+
+    const borrarElement = (e) => {
+        e.preventDefault()
+        borrargenero(e)
+    }
     return(
         <table className="table">
             <thead>
@@ -13,14 +18,14 @@ export function Table({generos}){
                 </tr>
             </thead>
             <tbody>{
-                generos.map((person,index) => (<Fragment>
+                generos.map((data,index) => (<Fragment>
                     <tr key={index}>
                         <th scope="row">{index + 1}</th>
-                        <td>{person.name}</td>
-                        <td>{person.status ? 'Activo':'Inactivo'}</td>
-                        <td>{person.description}</td>
+                        <td>{data.name}</td>
+                        <td>{data.status ? 'Activo':'Inactivo'}</td>
+                        <td>{data.description}</td>
                         <td>
-                            <button type="button" className="btn btn-danger">Borrar</button>
+                            <button type="button" className="btn btn-danger" id={data._id} onClick={borrarElement}>Borrar</button>
                             <button type="button" className="btn btn-warning">Editar</button>
                         </td>
                     </tr>

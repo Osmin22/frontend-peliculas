@@ -26,7 +26,7 @@ const putgenero = (_id,data) => {
     })
 }
 
-const deletegenero = (_id,data) => {
+const deletegenero = (_id) => {
     return axiosconfiguration.delete(`/generos/genero?_id=${_id}`,{},{
             headers:{
                 'Content-Type':'application/json'

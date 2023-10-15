@@ -24,7 +24,7 @@ const putdirector = (_id,data) => {
     })
 }
 
-const deletedirector = (_id,data) => {
+const deletedirector = (_id) => {
     return axiosconfiguration.delete(`/directores/director?_id=${_id}`,{},{
             headers:{
                 'Content-Type':'application/json'
