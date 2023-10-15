@@ -1,12 +1,18 @@
 import {Fragment} from 'react'
 
-export function Table({directors,borrardirector}){
+export function Table({directors,borrardirector,editardirector}){
+
 
     const borrarElement = (e) => {
         e.preventDefault()
         borrardirector(e)
     }
-    return(
+
+    const editar = (e) => {
+        editardirector(e)
+    }
+
+    return(<>
         <table className="table">
             <thead>
                 <tr>
@@ -25,12 +31,12 @@ export function Table({directors,borrardirector}){
                         <td>{person.status ? 'Activo':'Inactivo'}</td>
                         <td>{person.datetimecreate}</td>
                         <td>
-                            <button type="button" className="btn btn-danger" id={person._id}onClick={borrarElement} >Borrar</button>
-                            <button type="button" className="btn btn-warning">Editar</button>
+                            <button type="button" className="btn btn-danger" id={person._id} onClick={borrarElement} >Borrar</button>
+                            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo" id={person._id} onClick={editar}>Editar</button>
                         </td>
                     </tr>
                 </Fragment>))
             }</tbody>
         </table>
-    )
+    </>)
 }

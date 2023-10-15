@@ -1,5 +1,5 @@
 import {useState,useEffect,Fragment} from 'react'
-import {deletedirector, getdirector, postdirector} from '../../services/director/director'
+import {deletedirector, getdirector, postdirector,putdirector} from '../../services/director/director'
 import { Title } from '../ui/title'
 import { Modal } from './modal'
 import { Table } from './table'
@@ -127,6 +127,32 @@ export function Getdirector(){
         setloader(true)
     }
 
+    const editardirector = async (e) => {
+      setloader(true)
+      try{
+          const {data} = await putdirector(e.target.id,director) 
+          console.log(data)
+          Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Guardado',
+              showConfirmButton: false,
+              timer: 1500
+          })
+          listdirector()
+          cleardirector()
+          setloader(false)
+      }catch(e){
+          console.error(e)
+          Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+              footer: '<a href="">Why do I have this issue?</a>'
+            })
+          setloader(false)
+      }
+    }
     const handleChange = (e) => {
         console.log(e.target.name)
         Setdirector({
@@ -146,7 +172,11 @@ export function Getdirector(){
         {
             loader && <Spinner />
         }
-        <Table directors={directors} borrardirector={borrardirector} />
+        <Table 
+            directors={directors} 
+            borrardirector={borrardirector}
+            editardirector={editardirector}
+          />
         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Nuevo director</button>
         <Modal director={director} change={handleChange} creardirector={creardirector } cleardirector={cleardirector} />
     </>)
