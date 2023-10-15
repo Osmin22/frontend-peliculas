@@ -24,7 +24,7 @@ export function Gettipo () {
 
 
     return(<>
-        <Title title='Directores'/>
+        <Title title='Tipos'/>
         <Table tipo={tipo}/>
         <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Nuevo tipo</button>
         <Modal />
